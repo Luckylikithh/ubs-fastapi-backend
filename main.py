@@ -72,3 +72,6 @@ def read_conversions(
 @app.post("/api/conversions", response_model=schemas.ConversionResponse)
 def create_conversion(conversion: schemas.ConversionCreate, db: Session = Depends(get_db)):
     return crud.create_conversion(db, conversion)
+
+
+sync_rates()
