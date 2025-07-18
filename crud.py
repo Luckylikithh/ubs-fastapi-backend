@@ -3,6 +3,7 @@ from sqlalchemy import and_
 from models import Conversion
 from schemas import ConversionCreate
 from typing import Optional
+from sqlalchemy import asc, desc
 
 def create_conversion(db: Session, conversion: ConversionCreate):
 
@@ -29,4 +30,4 @@ def get_conversions(db: Session, threshold: Optional[float] = None, above: bool 
             query = query.filter(Conversion.exchange_rate > threshold)
         else:
             query = query.filter(Conversion.exchange_rate < threshold)
-    return query.all()
+    return query.order_by(asc(Conversion.country), desc(Conversion.record_date)).all()
