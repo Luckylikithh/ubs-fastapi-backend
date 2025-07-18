@@ -31,7 +31,7 @@ def sync_rates():
     url = (
         "https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v1/"
         "accounting/od/rates_of_exchange?fields=country,currency,country_currency_desc,"
-        "exchange_rate,record_date&page[size]=10000"
+        "exchange_rate,record_date"
     )
     try:
         response = requests.get(url)
